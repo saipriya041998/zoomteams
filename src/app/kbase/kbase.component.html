@@ -1,0 +1,213 @@
+<div>
+    <div class="header" style="background-color: white">
+      <a  class="font-light m-b-xs titlename">Knowledge Base/Articles</a>
+      <div class="header-right">
+        <a class=""  style="color: #3498db;padding: 8px;font-size: 10pt;height:34px !important;font-weight: 600;border-right: 1px solid #f1f1f1;">
+        <i class="fa fa-users" aria-hidden="true"></i> My Dashboard
+        </a>
+        <a class="" (click)=" myArticle()"  style="color: #3498db;padding: 8px;font-size: 10pt;height:34px !important;font-weight: 600;border-right: 1px solid #f1f1f1;">
+        <i class="fa fa-list"></i> My Articles
+        </a>
+        <button class="btn btn-white btn-xs"  style="color: #3498db;padding: 8px;font-size: 10pt;height:34px !important;font-weight: 600;border-right: 1px solid #f1f1f1;" (click)="openAddPopup(content1)">  <i class="fa fa-book"></i>Add Article</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="first" class="col-md-12" style="background-color:rgba(246, 242, 242, 0.863);">
+        <div id="dvarticlecontainer" style="display: inline-block; vertical-align: top;border-right:1px solid grey;padding-top:20px">
+          <div id="allarticletabview">
+            <div *ngFor="let item of arr &&  filterdArticle || arr;let i=index">
+              <div class="container" *ngIf="item.isAdmin;else falseblock">
+                <img src='{{item.image1}}' alt="Avatar" style="width:90px">
+                <h3 class="mb-2">{{item.article_name}}</h3>
+                <span style="padding-right:20px;">{{item.published_date}} {{item.published_time}}</span>
+                <span style="padding-right:20px;">{{item.category}}</span>
+                <span style="padding-right:20px;">{{item.created_by}}</span>
+                <p>{{item.description}}</p>
+                <span style="padding-right:20px;"><button class="firstbut" class="btn btn-primary btn-xs" (click)='onReadMore(ReadMore,item)'>Read More</button></span>
+                <button class="btn btn-primary btn-xs"  (click)="openEdit(content,i)">Edit</button>
+              </div>
+              <ng-template #falseblock>
+                <div class="container">
+                  <img src='{{item.image1}}' alt="Avatar" style="width:90px">
+                  <h3 class="mb-2">{{item.article_name}}</h3>
+                  <span style="padding-right:20px;">{{item.published_date}} {{item.published_time}}</span>
+                  <span style="padding-right:20px;">{{item.category}}</span>
+                  <span style="padding-right:20px;">{{item.created_by}}</span>
+                  <p>{{item.description}}</p>
+                  <span style="padding-right:20px;">&nbsp;<button  class="btn btn-primary btn-xs" (click)='onReadMore(ReadMore,item)'>Read More</button>
+                  </span>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <!-- <div id="dvarticlecontainer" style="display: inline-block; vertical-align: top;padding-top:20px"> -->
+        <div style="display: inline-block; vertical-align: top;padding-top:30px; padding-left:10px">
+          <div id="dvSearch">
+            <div style="font-size:medium">
+              <label>Search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+            <form class="form-inline mr-auto ">
+              <!-- <input class="form-control " type="text" placeholder="Search for Designation" aria-label="Search" (keyup)='onSearch(d.value)' name='n1' #d id='search-box-round'> -->
+              <input type="text"  id="txtbxsearch" style="width: 70%;height: 35px;" name='n1' #f placeholder=" Article Name / Description">
+              <button class="btn btn-primary" type='submit' (click)='onSearch(f.value)'><b>Search</b></button>
+            </form>
+            <hr style="border: 1px solid #d4cfc3;">
+            <h3 style="margin-top:30px;">Categories</h3>
+            <ul style="list-style: none;padding-left: 0px;width: 100%;">
+              <form>
+                <label>
+                  <input type="checkbox" (click)="Search()" id="checkboxmyarticle">Show All
+                  <!-- <input  type="radio" (onclick)="Search()" name="categories" formControlName="categories" value="Show All">Show All -->
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" (click)="Search1()" id="checkboxmyarticle">Accounts Recivables - Collections
+                  <!-- <input type="radio" ngModel="value" (click)="Search1()" name="categories" formControlName="categories" value="Accounts Recivables - Collections">Accounts Recivables - Collections -->
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" (click)="Search2()" id="checkboxmyarticle">Office - Practice Management
+                  <!-- <input type="radio" ngModel="value" (click)="Search2()" name="categories" formControlName="categories" value="Office - Practice Management">Office - Practice Management -->
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" (click)="Search3()" id="checkboxmyarticle">Surgical Authorizations & Verifications
+                  <!-- <input type="radio" ngModel="value" (click)="Search3()" name="categories" formControlName="categories" value="Surgical Authorizations & Verifications">Surgical Authorizations & Verifications -->
+                </label>
+                <br>
+              </form>
+            </ul>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <ng-template #ReadMore let-modal>
+    <div class="tab-pane" id="readarticletabview">
+      <div class="row" style="padding:10px">
+        <div class="col-md-12" style="padding:20px;">
+          <div class="hpanel blog-box">
+            <div class="panel-heading">
+              <div class="media clearfix">
+                <a class="pull-left">
+                <img src="http://qa.zoomteams.com/images/a3.jpg"alt="profile-picture" class="avatar">
+                </a>
+                <div class="media-body">
+                  <small>{{created_by}}<span class="font-bold"></span> </small>
+                  <br>
+                  <small class="text-muted">{{published_date}}</small>
+                  <small class="text-muted">{{published_time}}</small>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <h3>{{article_name}}</h3>
+              <hr>
+              <div>
+                <h3>{{description}}</h3>
+              </div>
+              <span>IANS</span>
+              <span><span>Updated</span>August 21, 2019, 5:02 PM IST</span>
+            </div>
+            <div><img src="{{image2}}"></div>
+          </div>
+          <div class="col-md-12">
+          </div>
+          <div>Pakistan Human Rights Minister Shireen Mazari has written to the UNICEF demanding the removal of Priyanka Chopra as Goodwill Ambassador over the Kashmir issue, and also cited the Indian actress' "jingoism and support" for the Indian government's action in Kashmir.
+          </div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mockery globally."
+            Mazari cited the "crisis" in Jammu and Kashmir due to the Narendra Modi government's revocation of its special status and alleged "ethnic cleansing of Kashmiri Muslims" there. She alleged that the Modi government is denying four million Indian Muslims their citizenship in the northeastern Indian state of Assam, and creating "detention centres akin to Nazi concentration camps".
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div>
+            alleged the Indian security forces have "intensified" the use of pellet guns "against women and children" in Kashmir.
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <!-- Add Popup form -->
+  <ng-template #content1 let-modal>
+    <h1 class="center">Add Article</h1>
+    <form [formGroup]="kbase" (ngSubmit)="onAddArticle()">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-6">
+          <label><b>Article_name</b></label>
+          <input formControlName="article_name" type="text" class="form-control" placeholder="enter address of organisation">
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-6 col-sm-4 col-md-7">
+          <label><b>Category</b></label>
+          <select formControlName="category" class="custom-select" >
+            <option value="">Choose your category</option>
+            <option *ngFor="let item of arr1" [value]="item.category1">{{item.category1}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-6 col-sm-4 col-md-8">
+          <label><b>Description</b></label>
+          <ejs-richtexteditor></ejs-richtexteditor>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row custom-wrapper">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-primary btn-sm-2 text-white">Save</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-danger btn-sm-2 text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">Cancel</button> <br/>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <!-- </div> -->
+    </form>
+  </ng-template>
+  <!-- Edit Popup form -->
+  <ng-template #content let-modal>
+    <h1 class="center">Add Article</h1>
+    <form [formGroup]="kbase" (ngSubmit)="onAddArticle()">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-6">
+          <label><b>Article_name</b></label>
+          <input formControlName="article_name" type="text" class="form-control" placeholder="enter address of organisation">
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-6 col-sm-4 col-md-7">
+          <label><b>Category</b></label>
+          <select formControlName="category" class="custom-select" >
+            <option value="">Choose your category</option>
+            <option *ngFor="let item of arr1" [value]="item.category1">{{item.category1}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-6 col-sm-4 col-md-8">
+          <label><b>Description</b></label>
+          <ejs-richtexteditor></ejs-richtexteditor>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row custom-wrapper">
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-primary btn-sm-2 text-white">Save</button>&nbsp;&nbsp;
+          <button type="button" class="btn btn-danger btn-sm-2 text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">Cancel</button> <br/>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <!-- </div> -->
+    </form>
+  </ng-template>
