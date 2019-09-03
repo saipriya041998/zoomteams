@@ -23,16 +23,16 @@ export class KbaseComponent implements OnInit {
   image2: string;
   isAdmin: boolean;
   arr: Article[] = [
-     new Article('1', 'testing', '8/29/2019', '6:15:09 AM', ' Office - Practice Management', 'Admin Manju', 'google testing', 'assets/a3.jpg', '', true),
+     new Article('1', 'testing', '8/29/2019', '6:15:09 AM', 'Office - Practice Management', 'Admin Manju', 'google testing', 'assets/a3.jpg', '', true),
      new Article('2', 'Hundreds Defy Curfew in Kargil', '8/6/2019', '7:49:14 AM', 'Office - Practice Management', 'Harsha Mitlakod', 'Kargil: Several people were detained in Kargil on Thursday after they defied res...', 'assets/a3.jpg', 'assets/download.jpg', false),
      new Article('3', 'Govt to Double National Fellowship for SC Stu', '8/6/2019', '7:46:20 AM', 'Surgical Authorizations & Verifications', ' Harsha Mitlakod', 'The National Fellowship was launched by the government in 2005 as the Rajiv Gand...', 'assets/a3.jpg', 'assets/exam-illustration2.jpg', false),
      new Article('4', 'All-New BMW 3-Series Launched in India at Rs', '8/6/2019', '5:36:39 AM', 'Accounts Recivables - Collections', 'Admin Manju', 'The all-new BMW 3 Series is available in two diesel variants (BMW 320d Sport and...', 'assets/a3.jpg', 'assets/BMW-3-Series.jpg', true),
      new Article('5', 'Govt to Double National Fellowship for SC Stu', '8/2/2019 ', '10:45:59 AM', 'Accounts Recivables - Collections', 'Harsha Mitlakod', 'he all-new BMW 3 Series is available in two diesel variants (BMW 320d Sport and ...', 'assets/a3.jpg', 'assets/BMW-3-Series.jpg', false),
-     new Article('6', 'Petrol in the national capital costs Rs 71.84 per litre and diesel is priced at Rs 65.11 a litre. In adjoining Noida', '8/1/2019 ', '1:25:07 PM', ' Accounts Recivables - Collections', ' Admin Manju', 'Petrol in the national capital costs Rs 71.84 per litre and diesel is priced at ...', 'assets/a3.jpg', 'assets/strike-called-by-Delhi-Petrol-Dealers.jpg', true),
+     new Article('6', 'Petrol in the national capital costs Rs 71.84 per litre and diesel is priced at Rs 65.11 a litre. In adjoining Noida', '8/1/2019 ', '1:25:07 PM', 'Accounts Recivables - Collections', ' Admin Manju', 'Petrol in the national capital costs Rs 71.84 per litre and diesel is priced at ...', 'assets/a3.jpg', 'assets/strike-called-by-Delhi-Petrol-Dealers.jpg', true),
      new Article('7', 'Pakistan Asks UNICEF to Remove Priyanka Chopr', '8/1/2019 ', ' 1:21:14 PM', 'Accounts Recivables - Collections', 'Admin Manju', 'Pakistan Human Rights Minister has written to the UNICEF demanding the removal o...', 'assets/a3.jpg', 'assets/Priyanka-Chopra.jpg', true)
   ];
   arr1: Category[] = [
-     new Category(1, ' Office - Practice Management'),
+     new Category(1, 'Office - Practice Management'),
      new Category(2, 'Accounts Recivables - Collections'),
      new Category(3, 'Surgical Authorizations & Verifications')
   ];
@@ -114,7 +114,7 @@ export class KbaseComponent implements OnInit {
   }
 
   openAddPopup(content1) {
-     if (this.kbase.value.article_id != null) {
+    //  if (this.kbase.value.article_id != null) {
         this.kbase.patchValue({
            article_id: null,
            article_name: null,
@@ -128,7 +128,7 @@ export class KbaseComponent implements OnInit {
         this.modalService.open(content1, {
            size: 'xl'
         });
-      }
+
   }
 
   onAddArticle() {
