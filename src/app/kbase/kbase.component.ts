@@ -114,17 +114,17 @@ export class KbaseComponent implements OnInit {
   }
 
   openAddPopup(content1) {
-    //  if (this.kbase.value.article_id != null) {
-    //     this.kbase.patchValue({
-    //        article_id: null,
-    //        article_name: null,
-    //        published_date: null,
-    //        category: null,
-    //        created_by: null,
-    //        description: null,
-    //        image1: null,
-    //        image2: null
-    //     });
+     if (this.kbase.value.article_id != null) {
+        this.kbase.patchValue({
+           article_id: null,
+           article_name: null,
+           published_date: null,
+           category: null,
+           created_by: null,
+           description: null,
+           image1: null,
+           image2: null
+        });
         this.modalService.open(content1, {
            size: 'xl'
         });
