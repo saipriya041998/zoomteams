@@ -128,6 +128,7 @@ export class KbaseComponent implements OnInit {
         this.modalService.open(content1, {
            size: 'xl'
         });
+      }
   }
 
   onAddArticle() {
