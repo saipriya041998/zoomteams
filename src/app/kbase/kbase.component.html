@@ -92,7 +92,7 @@
             <div class="panel-heading">
               <div class="media clearfix">
                 <a class="pull-left">
-                <img src="http://qa.zoomteams.com/images/a3.jpg"alt="profile-picture" class="avatar">
+                <img src="{{image1}}"alt="profile-picture" class="avatar">
                 </a>
                 <div class="media-body">
                   <small>{{created_by}}<span class="font-bold"></span> </small>
@@ -173,7 +173,7 @@
   <!-- Edit Popup form -->
   <ng-template #content let-modal>
     <h1 class="center">Edit Article</h1>
-    <form [formGroup]="kbase" (ngSubmit)="onAddArticle()">
+    <form [formGroup]="kbase" (ngSubmit)="UpdateItem()">
     <div class="container">
       <div class="row">
         <div class="col-xs-6 col-sm-4 col-md-6">
