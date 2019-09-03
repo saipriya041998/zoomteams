@@ -137,7 +137,7 @@
       <div class="row">
         <div class="col-xs-6 col-sm-4 col-md-6">
           <label><b>Article_name</b></label>
-          <input formControlName="article_name" type="text" class="form-control" placeholder="enter address of organisation">
+          <input formControlName="article_name" type="text" class="form-control" >
         </div>
       </div>
       <div class="row">
@@ -172,13 +172,13 @@
   </ng-template>
   <!-- Edit Popup form -->
   <ng-template #content let-modal>
-    <h1 class="center">Add Article</h1>
+    <h1 class="center">Edit Article</h1>
     <form [formGroup]="kbase" (ngSubmit)="onAddArticle()">
     <div class="container">
       <div class="row">
         <div class="col-xs-6 col-sm-4 col-md-6">
           <label><b>Article_name</b></label>
-          <input formControlName="article_name" type="text" class="form-control" placeholder="enter address of organisation">
+          <input formControlName="article_name" type="text" class="form-control" >
         </div>
       </div>
       <div class="row">
