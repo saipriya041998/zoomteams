@@ -144,7 +144,6 @@ export class KbaseComponent implements OnInit {
      console.log(value);
      if (value != '') {
         this.arr = this.arr.filter(x => x.article_name.startsWith(value));
-
      }
   }
 
