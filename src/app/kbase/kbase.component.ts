@@ -32,6 +32,7 @@ export class KbaseComponent implements OnInit {
      new Article('7', 'Pakistan Asks UNICEF to Remove Priyanka Chopr', '8/1/2019 ', ' 1:21:14 PM', 'Accounts Recivables - Collections', 'Admin Manju', 'Pakistan Human Rights Minister has written to the UNICEF demanding the removal o...', 'assets/a3.jpg', 'assets/Priyanka-Chopra.jpg', true)
   ];
   arr1: Category[] = [
+
      new Category(1, 'Office - Practice Management'),
      new Category(2, 'Accounts Recivables - Collections'),
      new Category(3, 'Surgical Authorizations & Verifications')
